@@ -1,0 +1,49 @@
+<template>
+    <template if:true={error}>
+        <lightning-card title="Handle Error" icon-name="standard:contact">
+            <p>{error}</p>
+        </lightning-card>
+    </template>
+    
+        <lightning-tabset variant="scoped">
+            <lightning-tab title="Gallery" label="Gallery">
+                <template if:true={boats.data}>
+                    <div class="slds-scrollable_y">
+                        <lightning-layout horizontal-align="center" multiple-rows="true">
+                            <template for:each={boats.data} for:item="boat">
+                                <lightning-layout-item 
+                                    key={boat.Id} 
+                                    size="12"
+                                    small-device-size="6"
+                                    medium-device-size="4"
+                                    large-device-size="3"		
+                                    padding="around-small">
+                                    <c-boat-tile boat={boat} selected-boat-id={selectedBoatId} onboatselect={updateSelectedTile}></c-boat-tile>
+                                </lightning-layout-item>
+                            </template>
+                        </lightning-layout>
+                    </div>
+                </template>
+            </lightning-tab>
+            <lightning-tab label="Boat Editor">
+                <template if:true={boats.data}>
+                    <div class="slds-scrollable_y">
+                        <lightning-datatable
+                            key-field="Id" 
+                            data={boats.data}
+                            columns={columns}
+                            onsave={handleSave}
+                            show-row-number-column
+                            hide-checkbox-column
+                            draft-values={draftValues}>
+                        </lightning-datatable>
+                    </div>
+                </template>
+            </lightning-tab>
+            <lightning-tab title="Boats Near Me" label="Boats Near Me">
+                <!-- boatsNearMe component goes here -->
+                <c-boats-near-me boat-type-id={boatTypeId}></c-boats-near-me>
+            </lightning-tab>
+        </lightning-tabset>
+    </template>
+</template>
