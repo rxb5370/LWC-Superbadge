@@ -140,5 +140,9 @@
 		<members>*</members>
 		<name>LightningMessageChannel</name>
 	</types>
+	<types>
+		<members>*</members>
+		<name>StaticResources</name>
+	</types>
 	<version>48.0</version>
 </Package>
