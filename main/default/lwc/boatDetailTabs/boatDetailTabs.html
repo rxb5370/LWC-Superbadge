@@ -13,7 +13,7 @@
             <lightning-tab label={label.labelDetails}>
                 <lightning-card  title={boatName} icon-name={detailsTabIconName}>
                     <lightning-button label={label.labelFullDetails} onclick={navigateToRecordViewPage} slot="actions"></lightning-button>
-                    <lightning-record-view-form record-id={boatId} object-api-name="Boat__c">
+                    <lightning-record-view-form density="compact" record-id={boatId} object-api-name="Boat__c">
                         <lightning-output-field field-name="BoatType__c">
                         </lightning-output-field>
                         <lightning-output-field field-name="Length__c">
